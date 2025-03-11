@@ -6,7 +6,7 @@
 
 ## Répartition des rôles:
 ### Front:
-- Evan et Viktor
+- Evan et Victor
 ### Back:
 - Léo, Nathanaël et Reda
 
