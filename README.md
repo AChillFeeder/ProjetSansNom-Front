@@ -18,3 +18,17 @@
 
 # UML et Diagrammes
 ![image](https://github.com/user-attachments/assets/86f84b20-7213-41b2-b765-8c16e3a46c92)
+
+
+# Git flow:
+
+## Branches
+**Branche main**: reçoit les releases testée dev, serait la branche déployée, PO execute les tests fonctionnels sur cette branche
+**Branche dev**: reçoit les changements de l'équipe dev
+**Branche fonctionnalité**: pour chaque fonctionnalité / bugfix, une nouvelle branche est créée, les developpements et les tests pour cette fonctionnalitée se passent sur cette branche
+
+## Régles de nommage:
+`#numéro du ticket` et puis assigner le label pertinents à l'issue (bugfix, fonctionnalité, documentation)
+
+**Pour la documentation: les changements partent directement sur `Main`**
+
