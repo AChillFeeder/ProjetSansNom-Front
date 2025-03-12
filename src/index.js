@@ -6,6 +6,8 @@ import Connexion from './Authentification/Connexion';
 import Inscription from './Authentification/Inscription';
 import reportWebVitals from './reportWebVitals';
 
+import HealthCheck from './HealthCheck/HealthCheck';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -14,6 +16,7 @@ root.render(
         <Route path="/" element={<Connexion />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/inscription" element={<Inscription />} />
+        <Route path="/healthcheck" element={<HealthCheck />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
