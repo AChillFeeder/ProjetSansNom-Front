@@ -5,7 +5,8 @@ const [status, setStatus] = useState("Checking...");
 const [data, setData] = useState(null);
 const [error, setError] = useState(null);
 
-const backendURL = "http://127.0.0.1:8080/healthcheck"; 
+// const backendURL = "http://127.0.0.1:8080/healthcheck"; 
+const backendURL = "https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io//healthcheck"; 
 
 useEffect(() => {
     const fetchHealthCheck = async () => {
