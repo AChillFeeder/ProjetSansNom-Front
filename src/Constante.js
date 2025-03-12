@@ -1,0 +1,1 @@
+export const API_URL = "https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io/";

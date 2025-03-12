@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Inscription.css";
+import { API_URL } from '../Constante';
 
 function Inscription() {
     const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ function Inscription() {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/api/users/register", {
+            const response = await fetch(`${API_URL}/api/users/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
