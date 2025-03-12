@@ -9,6 +9,8 @@ import AjoutModif from './CRUD/AjoutModif';
 import Suppression from './CRUD/Suppression';
 import reportWebVitals from './reportWebVitals';
 
+import HealthCheck from './HealthCheck/HealthCheck';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -20,6 +22,7 @@ root.render(
         <Route path="/consultation" element={<Consultation />} />
         <Route path="/ajoutModif" element={<AjoutModif />} />
         <Route path="/suppression" element={<Suppression />} />
+        <Route path="/healthcheck" element={<HealthCheck />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
