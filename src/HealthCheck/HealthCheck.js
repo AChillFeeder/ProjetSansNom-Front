@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_URL } from "../Constante";
 
 const HealthCheck = () => {
 const [status, setStatus] = useState("Checking...");
@@ -6,7 +7,8 @@ const [data, setData] = useState(null);
 const [error, setError] = useState(null);
 
 // const backendURL = "http://127.0.0.1:8080/healthcheck"; 
-const backendURL = "https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io/healthcheck"; 
+// const backendURL = "https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io/healthcheck"; 
+const backendURL = API_URL + '/healthcheck';
 
 useEffect(() => {
     const fetchHealthCheck = async () => {
