@@ -72,8 +72,9 @@ const Accueil = () => {
           <div className="book-list">
             {recommendedBooks.map(book => (
               <div key={book.id} className="book-card">
-                <img src={book.chemin_photo} alt={book.titre_livre} className="book-image" />
-                <h3 className="book-title">{book.titre_livre}</h3>
+                <h3 className="book-title">
+                  {book.titre_livre.slice(0, 100) + (book.titre_livre.length > 100 ? "..." : "")}
+                </h3>
                 <p className="book-author">{book.nom} {book.prenom}</p>
                 <p className="book-price">{book.prix}€</p>
               </div>
