@@ -12,7 +12,6 @@ import reportWebVitals from './reportWebVitals';
 import Messagerie from './Messagerie/Messagerie';
 import CGU from './CGU/CGU';
 import MentionLegale from './MentionLegale/MentionLegale';
-
 import HealthCheck from './HealthCheck/HealthCheck';
 import UserProfile from './Profil/Profil';
 import Profil from './Profil/Profil';
