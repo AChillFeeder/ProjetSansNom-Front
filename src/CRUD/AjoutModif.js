@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
 import './AjoutModif.css';
 
-const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
+const AjoutModif = ({ show, handleClose, mode, livre, onSubmit }) => {
     const [formData, setFormData] = useState({
         titre_livre: '',
         titre_annonce: '',
@@ -12,17 +12,50 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
         photos: []
     });
 
+    useEffect(() => {
+        if (livre && mode === 'modification') {
+            setFormData({
+                titre_livre: livre.titre_livre || '',
+                titre_annonce: livre.titre_annonce || '',
+                description_annonce: livre.description_annonce || '',
+                etat_livre_id: livre.etat_livre_id || '',
+                prix: livre.prix || '',
+                photos: []
+            });
+        }
+    }, [livre, mode]);
+
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
+        if (e) e.preventDefault();
+        
+        // Create a clean object without any circular references
+        const cleanData = {
+            titre_livre: formData.titre_livre.trim(),
+            titre_annonce: formData.titre_annonce.trim(),
+            description_annonce: formData.description_annonce.trim(),
+            etat_livre_id: parseInt(formData.etat_livre_id) || 0,
+            prix: parseFloat(formData.prix) || 0
+        };
+        
+        onSubmit(cleanData);
+        handleClose();
     };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
+        const { name, value, type } = e.target;
+        
+        if (type === 'file') {
+            const files = Array.from(e.target.files);
+            setFormData(prev => ({
+                ...prev,
+                photos: files
+            }));
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        }
     };
 
     return (
@@ -38,7 +71,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                                     <Form.Control
                                         type="text"
                                         name="titre_livre"
-                                        value={formData.titre_livre}
+                                        value={formData.titre_livre || ''}
                                         onChange={handleChange}
                                         required
                                     />
@@ -49,7 +82,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                                     <Form.Control
                                         type="text"
                                         name="titre_annonce"
-                                        value={formData.titre_annonce}
+                                        value={formData.titre_annonce || ''}
                                         onChange={handleChange}
                                         required
                                     />
@@ -61,7 +94,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                                         as="textarea"
                                         rows={4}
                                         name="description_annonce"
-                                        value={formData.description_annonce}
+                                        value={formData.description_annonce || ''}
                                         onChange={handleChange}
                                         required
                                     />
@@ -71,7 +104,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                                     <Form.Label>État du livre*</Form.Label>
                                     <Form.Select 
                                         name="etat_livre_id" 
-                                        value={formData.etat_livre_id}
+                                        value={formData.etat_livre_id || ''}
                                         onChange={handleChange}
                                         required
                                     >
@@ -89,7 +122,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                                         type="number"
                                         step="0.01"
                                         name="prix"
-                                        value={formData.prix}
+                                        value={formData.prix || ''}
                                         onChange={handleChange}
                                         required
                                     />
@@ -131,7 +164,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                             <Form.Control
                                 type="text"
                                 name="titre_livre"
-                                value={formData.titre_livre}
+                                value={formData.titre_livre || ''}
                                 onChange={handleChange}
                                 required
                             />
@@ -142,7 +175,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                             <Form.Control
                                 type="text"
                                 name="titre_annonce"
-                                value={formData.titre_annonce}
+                                value={formData.titre_annonce || ''}
                                 onChange={handleChange}
                                 required
                             />
@@ -154,7 +187,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                                 as="textarea"
                                 rows={4}
                                 name="description_annonce"
-                                value={formData.description_annonce}
+                                value={formData.description_annonce || ''}
                                 onChange={handleChange}
                                 required
                             />
@@ -164,7 +197,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                             <Form.Label>État du livre*</Form.Label>
                             <Form.Select 
                                 name="etat_livre_id" 
-                                value={formData.etat_livre_id}
+                                value={formData.etat_livre_id || ''}
                                 onChange={handleChange}
                                 required
                             >
@@ -182,7 +215,7 @@ const AjoutModif = ({ show, handleClose, mode = 'ajout', livre }) => {
                                 type="number"
                                 step="0.01"
                                 name="prix"
-                                value={formData.prix}
+                                value={formData.prix || ''}
                                 onChange={handleChange}
                                 required
                             />
