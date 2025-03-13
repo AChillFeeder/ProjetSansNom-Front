@@ -10,7 +10,8 @@ import AjoutModif from './CRUD/AjoutModif';
 import Suppression from './CRUD/Suppression';
 import reportWebVitals from './reportWebVitals';
 import Messagerie from './Messagerie/Messagerie';
-
+import CGU from './CGU/CGU';
+import MentionLegale from './MentionLegale/MentionLegale';
 import HealthCheck from './HealthCheck/HealthCheck';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,6 +28,8 @@ root.render(
         <Route path="/healthcheck" element={<HealthCheck />} />
         <Route path="/messagerie" element={<Messagerie />} />
         <Route path="/healthcheck" element={<HealthCheck />} />
+        <Route path="/cgu" element={<CGU />} />
+        <Route path="/mentionlegale" element={<MentionLegale />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
