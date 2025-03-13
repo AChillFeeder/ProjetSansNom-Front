@@ -1,107 +1,180 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .messaging-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .conversations-list {
-    width: 25%;
-    background-color: #fff;
-    border-right: 1px solid #ddd;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .conversations-list h2 {
-    margin-top: 0;
-  }
-  
-  .conversations-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .conversations-list li {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .conversations-list li:hover,
-  .conversations-list li.active {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .messages-window {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-  }
-  
-  .messages-list {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
-  .message {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    max-width: 60%;
-  }
-  
-  .message.sent {
-    background-color: #007bff;
-    color: #fff;
-    align-self: flex-end;
-  }
-  
-  .message.received {
-    background-color: #f1f1f1;
-    align-self: flex-start;
-  }
-  
-  .message-input {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-  }
-  
-  .message-input input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .message-input button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .message-input button:hover {
-    background-color: #0056b3;
-  }
-  
-  .select-conversation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    font-size: 1.2em;
-    color: #888;
-  }
+.App {
+  text-align: center;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.App-header {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.messaging-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 20px;
+  text-align: left;
+  overflow-y: hidden;
+}
+
+.sidebar .user-info {
+  margin-bottom: 20px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.messages-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.messages-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0;
+}
+
+.message-container.sent {
+  align-items: flex-end;
+}
+
+.message-container.received {
+  align-items: flex-start;
+}
+
+.message-bubble {
+  padding: 12px 16px;
+  border-radius: 20px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.sent .message-bubble {
+  background: #DCF8C6;
+  color: #000;
+  border-bottom-right-radius: 0;
+}
+
+.received .message-bubble {
+  background: #eaeaea;
+  color: #000;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.message-container.sent .message-time {
+  text-align: right;
+}
+
+.message-container.received .message-time {
+  text-align: left;
+}
+
+.message-input {
+  display: flex;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.message-input input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.message-input button {
+  padding: 14px 24px;
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-input button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.no-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.h3title {
+  text-align: center;
+}
