@@ -52,7 +52,10 @@ export default function MessagingPage() {
         },
       })
         .then((res) => res.json())
-        .then((d) => setUser(d));
+        .then((d) => {
+          console.log("getCurrentUser response:", d);
+          setUser(d);
+        })
     }
   }, []);
 
