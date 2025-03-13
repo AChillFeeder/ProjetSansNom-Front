@@ -21,10 +21,6 @@
     /* transition: transform 0.3s ease; */
   }
   
-  .auth-container:hover {
-    /* transform: translateY(-5px); */
-  }
-  
   .auth-title {
     color: #4CAF50;
     margin-bottom: 2.5rem;
