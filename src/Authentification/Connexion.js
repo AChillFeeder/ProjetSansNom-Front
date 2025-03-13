@@ -34,7 +34,7 @@ function Connexion() {
             localStorage.setItem("token", data.token);
 
             setTimeout(() => {
-                window.location.href = "/dashboard";
+                window.location.href = "/";
             }, 2000);
         } catch (error) {
             setMessage(`❌ Erreur : ${error.message}`);

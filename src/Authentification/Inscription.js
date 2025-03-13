@@ -49,7 +49,7 @@ function Inscription() {
 
             setMessage("✅ Inscription réussie ! Redirection...");
             setTimeout(() => {
-                window.location.href = "/login";
+                window.location.href = "/connexion";
             }, 2000);
         } catch (error) {
             setMessage(`❌ Erreur : ${error.message}`);
@@ -86,7 +86,7 @@ function Inscription() {
                         <button type="submit" className="login-button">S'inscrire</button>
                     </form>
                     <p className="signup-text">
-                        Déjà inscrit ? <a href="/">Se connecter</a>
+                        Déjà inscrit ? <a href="/connexion">Se connecter</a>
                     </p>
                 </div>
             </header>
