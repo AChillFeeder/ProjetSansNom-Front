@@ -184,35 +184,16 @@ const Accueil = () => {
       </main>
 
       <footer className="footer">
- 
-
         <div className="useful-links">
- 
-
           <a href="/cgu">CGU</a>
- 
-
           <a href="/contact">Contact</a>
- 
-
         </div>
- 
-
         <div className="social-legal">
- 
-
           <span>Réseaux sociaux</span>
- 
-
           <span>Mentions légales</span>
- 
-
         </div>
- 
-
       </footer>
     </div>
   );
-};
 
 export default Accueil;
