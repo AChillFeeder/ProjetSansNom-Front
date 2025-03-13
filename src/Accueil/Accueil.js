@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./Accueil.css";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../Constante";
+import BookCard from "../components/BookCard";
+import React, { useEffect, useState } from "react";
+import "./Accueil.css";
+import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../Constante";
 
 const Accueil = () => {
   const [recommendedBooks, setRecommendedBooks] = useState([]);
@@ -19,11 +24,15 @@ const Accueil = () => {
         setLoading(true);
         const response = await fetch(`${API_URL}/api/annonces`, {
           headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
 
+        
         const data = await response.json();
+        console.log(data);
         if (!response.ok) {
           throw new Error(data.message || "Erreur lors de la récupération des annonces.");
         }
@@ -72,6 +81,8 @@ const Accueil = () => {
       const response = await fetch(`${API_URL}/messages/start-conversation`, {
         method: "POST",
         headers: {
+          "Content-Type": "application/json", 
+          Authorization: `Bearer ${localStorage.getItem("token")}`
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -94,6 +105,7 @@ const Accueil = () => {
   return (
     <div className="home-container">
       <header className="header">
+        <div className="left"><span className="bold_title_part">ME</span>|BOOK</div>
         <div className="left">
           <span className="bold_title_part">ME</span>|BOOK
         </div>
@@ -124,8 +136,11 @@ const Accueil = () => {
         {message && <div className="alert alert-danger mb-4">{message}</div>}
 
         <section className="recommendations">
-          <h2>Recommandations pour vous</h2>
+          <h2>📚 Recommandations pour vous</h2>
           <div className="book-list">
+            {recommendedBooks.map(book => (
+              <BookCard key={book.id} book={book} handleStartConversation={handleStartConversation} />
+            ))}
             {filteredRecommended.length > 0 ? (
               filteredRecommended.map((book) => (
                 <div key={book.id} className="book-card">
@@ -147,8 +162,11 @@ const Accueil = () => {
         </section>
 
         <section className="popular-books">
-          <h2>Livres populaires</h2>
+          <h2>🔥 Livres populaires</h2>
           <div className="book-list">
+            {popularBooks.map(book => (
+              <BookCard key={book.id} book={book} handleStartConversation={handleStartConversation} />
+            ))}
             {filteredPopular.length > 0 ? (
               filteredPopular.map((book) => (
                 <div key={book.id} className="book-card">
