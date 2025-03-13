@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import './Accueil.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { API_URL } from '../Constante';
+import React, { useEffect, useState } from "react";
+import "./Accueil.css";
+import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../Constante";
+import BookCard from "../components/BookCard";
 
 const Accueil = () => {
   const [recommendedBooks, setRecommendedBooks] = useState([]);
@@ -16,11 +17,13 @@ const Accueil = () => {
         setLoading(true);
         const response = await fetch(`${API_URL}/api/annonces`, {
           headers: {
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         });
 
+        
         const data = await response.json();
+        console.log(data);
         if (!response.ok) {
           throw new Error(data.message || "Erreur lors de la récupération des annonces.");
         }
@@ -48,8 +51,8 @@ const Accueil = () => {
       const response = await fetch(`${API_URL}/messages/start-conversation`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
+          "Content-Type": "application/json", 
+          Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
           id_sender: userId,
@@ -70,7 +73,7 @@ const Accueil = () => {
   return (
     <div className="home-container">
       <header className="header">
-        <div className="left"><span className='bold_title_part'>ME</span>|BOOK</div>
+        <div className="left"><span className="bold_title_part">ME</span>|BOOK</div>
         <div className="center">
           <input type="text" placeholder="Rechercher..." className="search-bar" />
           <button className="search-button">🔍</button>
@@ -84,46 +87,24 @@ const Accueil = () => {
           </Link>
         </div>
       </header>
+
       <main className="main-content">
         {message && <div className="alert alert-danger mb-4">{message}</div>}
 
         <section className="recommendations">
-          <h2>Recommandations pour vous</h2>
+          <h2>📚 Recommandations pour vous</h2>
           <div className="book-list">
             {recommendedBooks.map(book => (
-              <div key={book.id} className="book-card">
-                <h3 className="book-title">{book.titre_livre.slice(0, 100)}...</h3>
-                <p className="book-author">{book.nom} {book.prenom}</p>
-                <p className="book-price">{book.prix}€</p>
-                <button
-                  className="message-seller-btn"
-                  onClick={() => handleStartConversation(book.created_by, book.nom, book.prenom)}
-                >
-                  Envoyer un message au vendeur
-                </button>
-              </div>
+              <BookCard key={book.id} book={book} handleStartConversation={handleStartConversation} />
             ))}
           </div>
         </section>
 
         <section className="popular-books">
-          <h2>Livres populaires</h2>
+          <h2>🔥 Livres populaires</h2>
           <div className="book-list">
             {popularBooks.map(book => (
-              <div key={book.id} className="book-card">
-                <img src={book.chemin_photo} alt={book.titre_livre} className="book-image" />
-                <h3 className="book-title">
-                  {book.titre_livre.length > 100 ? book.titre_livre.slice(0, 100) + "..." : book.titre_livre}
-                </h3>
-                <p className="book-author">{book.nom} {book.prenom}</p>
-                <p className="book-price">{book.prix}€</p>
-                <button
-                  className="message-seller-btn"
-                  onClick={() => handleStartConversation(book.created_by, book.nom, book.prenom)}
-                >
-                  Envoyer un message au vendeur
-                </button>
-              </div>
+              <BookCard key={book.id} book={book} handleStartConversation={handleStartConversation} />
             ))}
           </div>
         </section>
