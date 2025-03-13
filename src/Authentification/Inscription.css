@@ -18,11 +18,11 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 450px;
-    transition: transform 0.3s ease;
+    /* transition: transform 0.3s ease; */
   }
   
   .auth-container:hover {
-    transform: translateY(-5px);
+    /* transform: translateY(-5px); */
   }
   
   .auth-title {
@@ -105,5 +105,5 @@
   .signup-text a:hover {
     color: #4CAF50;
     text-decoration: none;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    /* text-shadow: 0 0 8px ; */
   }
