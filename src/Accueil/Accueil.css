@@ -152,7 +152,8 @@
   }
   
   .footer .useful-links a,
-  .footer .social-legal span {
+  .footer .social-legal span,
+  .footer .social-legal a:hover {
     margin-right: 10px;
     color: #4CAF50;
     text-decoration: none;
@@ -163,7 +164,8 @@
   }
   
   .footer .useful-links a::after,
-  .footer .social-legal span::after {
+  .footer .social-legal span::after,
+  .footer .social-legal a:hover {
     content: '';
     position: absolute;
     left: 0;
@@ -175,7 +177,8 @@
   }
   
   .footer .useful-links a:hover,
-  .footer .social-legal span:hover {
+  .footer .social-legal span:hover,
+  .footer .social-legal a:hover {
     color: #45a049;
     transform: scale(1.05);
   }
