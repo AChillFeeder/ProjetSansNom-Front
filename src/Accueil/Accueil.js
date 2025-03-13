@@ -70,7 +70,7 @@ const Accueil = () => {
   return (
     <div className="home-container">
       <header className="header">
-        <div className="left">MIBOOK</div>
+        <div className="left"><span className='bold_title_part'>ME</span>|BOOK</div>
         <div className="center">
           <input type="text" placeholder="Rechercher..." className="search-bar" />
           <button className="search-button">🔍</button>
