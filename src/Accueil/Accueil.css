@@ -1,189 +1,205 @@
 .home-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f0f2f5;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #ffffff;
-    color: #333;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header .left {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #4CAF50;
-  }
-  
-  .header .center {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .header .search-bar {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px 0 0 8px;
-    font-size: 1rem;
-  }
-  
-  .header .search-button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-left: none;
-    border-radius: 0 8px 8px 0;
-    background-color: #4CAF50;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .header .search-button:hover {
-    background-color: #45a049;
-  }
-  
-  .header .right {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .header .message-button,
-  .header .profile-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .header .message-button:hover,
-  .header .profile-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-  }
-  
-  .main-content {
-    flex-grow: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    background-color: #ffffff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    border-radius: 15px;
-  }
-  
-  .recommendations, .popular-books {
-    width: 100%;
-  }
-  
-  .recommendations h2, .popular-books h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .book-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .book-card {
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: calc(20% - 20px);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .book-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .book-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .book-title {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .book-author {
-    font-size: 1rem;
-    color: #777;
-    margin-bottom: 10px;
-  }
-  
-  .book-price {
-    font-size: 1rem;
-    color: #4CAF50;
-    font-weight: bold;
-  }
-  
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #ffffff;
-    color: #333;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .footer .useful-links a,
-  .footer .social-legal span,
-  .footer .social-legal a:hover {
-    margin-right: 10px;
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .footer .useful-links a::after,
-  .footer .social-legal span::after,
-  .footer .social-legal a:hover {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background: #45a049;
-    transition: width 0.3s ease;
-  }
-  
-  .footer .useful-links a:hover,
-  .footer .social-legal span:hover,
-  .footer .social-legal a:hover {
-    color: #45a049;
-    transform: scale(1.05);
-  }
-  
-  .footer .useful-links a:hover::after,
-  .footer .social-legal span:hover::after {
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header .left {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.header .center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .search-bar {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+  font-size: 1rem;
+}
+
+.header .search-button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  background-color: #4CAF50;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header .search-button:hover {
+  background-color: #45a049;
+}
+
+.header .right {
+  display: flex;
+  gap: 10px;
+}
+
+.header .message-button,
+.header .profile-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.header .message-button:hover,
+.header .profile-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  border-radius: 15px;
+}
+
+.recommendations, .popular-books {
+  width: 100%;
+}
+
+.recommendations h2, .popular-books h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(20% - 20px);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.book-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.book-author {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.book-price {
+  font-size: 1rem;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer .useful-links a,
+.footer .social-legal span,
+.footer .social-legal a:hover {
+  margin-right: 10px;
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer .useful-links a::after,
+.footer .social-legal span::after,
+.footer .social-legal a:hover {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #45a049;
+  transition: width 0.3s ease;
+}
+
+.footer .useful-links a:hover,
+.footer .social-legal span:hover,
+.footer .social-legal a:hover {
+  color: #45a049;
+  transform: scale(1.05);
+}
+
+.footer .useful-links a:hover::after,
+.footer .social-legal span:hover::after {
+  width: 100%;
+}
+
+.message-seller-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.message-seller-btn:hover {
+  background-color: #217dbb;
+}

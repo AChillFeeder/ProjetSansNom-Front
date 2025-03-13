@@ -25,13 +25,11 @@ const Accueil = () => {
           throw new Error(data.message || "Erreur lors de la récupération des annonces.");
         }
 
-        // Pour cet exemple, nous allons simplement diviser les annonces en deux catégories
-        const recommended = data.slice(0, 5); // Les 5 premières annonces comme recommandations
-        const popular = data.slice(5, 10); // Les 5 suivantes comme populaires
+        const recommended = data.slice(0, 5);
+        const popular = data.slice(5, 10);
 
         setRecommendedBooks(recommended);
         setPopularBooks(popular);
-
       } catch (error) {
         setMessage(`❌ Erreur : ${error.message}`);
       } finally {
@@ -48,15 +46,13 @@ const Accueil = () => {
         <div className="left">MIBOOK</div>
         <div className="center">
           <input type="text" placeholder="Rechercher..." className="search-bar" />
-          <button className="search-button">
-            🔍
-          </button>
+          <button className="search-button">🔍</button>
         </div>
         <div className="right">
-          <Link to="../Messagerie">
+          <Link to="/messagerie">
             <button className="message-button">Messagerie</button>
           </Link>
-          <Link to="../Profil">
+          <Link to="/profil">
             <button className="profile-button">Profil</button>
           </Link>
         </div>
@@ -77,6 +73,9 @@ const Accueil = () => {
                 </h3>
                 <p className="book-author">{book.nom} {book.prenom}</p>
                 <p className="book-price">{book.prix}€</p>
+                <Link to="/messagerie">
+                  <button className="message-seller-btn">Envoyer un message au vendeur</button>
+                </Link>
               </div>
             ))}
           </div>
@@ -87,9 +86,14 @@ const Accueil = () => {
             {popularBooks.map(book => (
               <div key={book.id} className="book-card">
                 <img src={book.chemin_photo} alt={book.titre_livre} className="book-image" />
-                <h3 className="book-title">{book.titre_livre}</h3>
+                <h3 className="book-title">
+                  {book.titre_livre.slice(0, 100) + (book.titre_livre.length > 100 ? "..." : "")}
+                </h3>
                 <p className="book-author">{book.nom} {book.prenom}</p>
                 <p className="book-price">{book.prix}€</p>
+                <Link to="/messagerie">
+                  <button className="message-seller-btn">Envoyer un message au vendeur</button>
+                </Link>
               </div>
             ))}
           </div>
