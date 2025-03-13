@@ -1,33 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import './Accueil.css';
+import { Link } from 'react-router-dom';
+import { API_URL } from '../Constante';
 
 const Accueil = () => {
   const [recommendedBooks, setRecommendedBooks] = useState([]);
   const [popularBooks, setPopularBooks] = useState([]);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchBooks = async () => {
+    const fetchAnnonces = async () => {
       try {
-        const response = await fetch('https://api.example.com/recommended-books');
+        setLoading(true);
+        const response = await fetch(`${API_URL}/api/annonces`, {
+          headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+          }
+        });
+
         const data = await response.json();
-        setRecommendedBooks(data);
+
+        if (!response.ok) {
+          throw new Error(data.message || "Erreur lors de la récupération des annonces.");
+        }
+
+        // Pour cet exemple, nous allons simplement diviser les annonces en deux catégories
+        const recommended = data.slice(0, 5); // Les 5 premières annonces comme recommandations
+        const popular = data.slice(5, 10); // Les 5 suivantes comme populaires
+
+        setRecommendedBooks(recommended);
+        setPopularBooks(popular);
+
       } catch (error) {
-        console.error('Erreur lors de la récupération des livres recommandés:', error);
+        setMessage(`❌ Erreur : ${error.message}`);
+      } finally {
+        setLoading(false);
       }
     };
 
-    const fetchPopularBooks = async () => {
-      try {
-        const response = await fetch('https://api.example.com/popular-books');
-        const data = await response.json();
-        setPopularBooks(data);
-      } catch (error) {
-        console.error('Erreur lors de la récupération des livres populaires:', error);
-      }
-    };
-
-    fetchBooks();
-    fetchPopularBooks();
+    fetchAnnonces();
   }, []);
 
   return (
@@ -41,24 +53,29 @@ const Accueil = () => {
           </button>
         </div>
         <div className="right">
-          <button
-            className="message-button"
-            onClick={() => (window.location.href = "/messagerie")}>
-            Messagerie
-          </button>
-          <button className="profile-button">Profil</button>
+          <Link to="../Messagerie">
+            <button className="message-button">Messagerie</button>
+          </Link>
+          <Link to="../Profil">
+            <button className="profile-button">Profil</button>
+          </Link>
         </div>
       </header>
       <main className="main-content">
+        {message && (
+          <div className={`alert ${message.includes('❌') ? 'alert-danger' : 'alert-success'} mb-4`}>
+            {message}
+          </div>
+        )}
         <section className="recommendations">
           <h2>Recommandations pour vous</h2>
           <div className="book-list">
             {recommendedBooks.map(book => (
               <div key={book.id} className="book-card">
-                <img src={book.image} alt={book.title} className="book-image" />
-                <h3 className="book-title">{book.title}</h3>
-                <p className="book-author">{book.author}</p>
-                <p className="book-price">{book.price}</p>
+                <img src={book.chemin_photo} alt={book.titre_livre} className="book-image" />
+                <h3 className="book-title">{book.titre_livre}</h3>
+                <p className="book-author">{book.nom} {book.prenom}</p>
+                <p className="book-price">{book.prix}€</p>
               </div>
             ))}
           </div>
@@ -68,10 +85,10 @@ const Accueil = () => {
           <div className="book-list">
             {popularBooks.map(book => (
               <div key={book.id} className="book-card">
-                <img src={book.image} alt={book.title} className="book-image" />
-                <h3 className="book-title">{book.title}</h3>
-                <p className="book-author">{book.author}</p>
-                <p className="book-price">{book.price}</p>
+                <img src={book.chemin_photo} alt={book.titre_livre} className="book-image" />
+                <h3 className="book-title">{book.titre_livre}</h3>
+                <p className="book-author">{book.nom} {book.prenom}</p>
+                <p className="book-price">{book.prix}€</p>
               </div>
             ))}
           </div>
