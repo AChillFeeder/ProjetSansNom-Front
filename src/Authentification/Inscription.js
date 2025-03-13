@@ -26,7 +26,7 @@ function Inscription() {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/api/users/register", {
+            const response = await fetch("http://0.0.0.0:8080/api/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
