@@ -1,0 +1,196 @@
+.consultation-container {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.custom-table {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 0;
+    box-shadow: 0 4px 6px rgba(46, 125, 50, 0.1);
+    border: 1px solid #e8f5e9;
+}
+
+.table-header {
+    background-color: #2e7d32;
+}
+
+.table-header th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 18px !important;
+    vertical-align: middle;
+    color: #ffffff;
+    border-bottom: none;
+}
+
+.table-row-hover:hover {
+    background-color: #e8f5e9 !important;
+    transition: all 0.3s ease;
+}
+
+.etat-badge {
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: 25px;
+    background-color: #4caf50 !important;
+    color: white;
+    border: none;
+}
+
+.status-badge {
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+td {
+    vertical-align: middle !important;
+    padding: 16px !important;
+    color: #2e7d32;
+    border-color: #e8f5e9;
+}
+
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(46, 125, 50, 0.08);
+    background-color: white;
+}
+
+h2 {
+    color: #2e7d32;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Supprimez ou commentez le style h2::after qui crée le soulignement */
+/* h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #4caf50;
+    border-radius: 2px;
+} */
+
+.badge {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.badge-success {
+    background-color: #2e7d32 !important;
+    color: white;
+}
+
+.badge-secondary {
+    background-color: #78909c !important;
+    color: white;
+}
+
+.fw-bold {
+    color: #1b5e20;
+}
+
+/* Animation pour le hover des lignes */
+.table-row-hover {
+    transition: transform 0.2s ease;
+}
+
+.table-row-hover:hover {
+    box-shadow: 2px 0 8px rgba(46, 125, 50, 0.1);
+}
+
+@media (max-width: 768px) {
+    .consultation-container {
+        padding: 1rem;
+    }
+
+    .custom-table {
+        font-size: 0.9rem;
+    }
+    
+    .badge {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animation au chargement */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Bouton d'ajout */
+.add-button {
+    background-color: #2e7d32 !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #1b5e20 !important;
+}
+
+/* Boutons d'action */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-edit {
+    background-color: #4caf50 !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.btn-edit:hover {
+    background-color: #2e7d32 !important;
+}
+
+.btn-delete {
+    background-color: #f44336 !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f !important;
+}
