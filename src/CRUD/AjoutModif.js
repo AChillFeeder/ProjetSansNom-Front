@@ -73,6 +73,11 @@ const AjoutModif = ({ show, handleClose, mode, livre, onSubmit }) => {
             onSubmit(data);
             handleClose();
             
+            // Actualiser la page après une modification réussie
+            if (mode === 'modification') {
+                window.location.reload();
+            }
+            
         } catch (error) {
             console.error('Error:', error);
             alert(`Erreur: ${error.message}`);
