@@ -7,6 +7,11 @@ import Suppression from './Suppression';
 import AjoutModif from './AjoutModif';
 import { API_URL } from '../Constante';
 
+// Add this helper function at the top of your component
+const truncateText = (text, maxLength = 50) => {
+    return text?.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+};
+
 const Consultation = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showAjoutModifModal, setShowAjoutModifModal] = useState(false);
@@ -207,11 +212,15 @@ const Consultation = () => {
         setShowDeleteModal(true);
     };
 
-    const handleConfirmDelete = () => {
-        console.log("Suppression confirmée du livre:", selectedLivre);
-        // Ajoutez ici la logique de suppression
-        setShowDeleteModal(false);
-        setSelectedLivre(null);
+    const handleConfirmDelete = async (id) => {
+        try {
+            setLivres(prevLivres => prevLivres.filter(livre => livre.id !== id));
+            setMessage("✅ Livre supprimé avec succès !");
+            await fetchAnnonces(); // Refresh the list
+        } catch (error) {
+            console.error('Refresh Error:', error);
+            setMessage("❌ Erreur lors du rafraîchissement de la liste");
+        }
     };
 
     return (
@@ -228,7 +237,7 @@ const Consultation = () => {
                     </Button>
                     <Card className="shadow-sm">
                         <Card.Body>
-                            <h2 className="text-center mb-4">Catalogue des Livres</h2>
+                            <h2 className="text-center mb-4">Catalogue des Annonces</h2>
                             <Table striped bordered hover responsive className="custom-table">
                                 <thead className="table-header">
                                     <tr>
@@ -247,8 +256,8 @@ const Consultation = () => {
                                     {currentItems.map((livre) => (
                                         <tr key={livre.id} className="table-row-hover">
                                             <td className="text-center">{livre.id}</td>
-                                            <td className="fw-bold">{livre.titre_livre}</td>
-                                            <td>{livre.titre_annonce}</td>
+                                            <td className="fw-bold">{truncateText(livre.titre_livre)}</td>
+                                            <td>{truncateText(livre.titre_annonce)}</td>
                                             <td className="text-center">
                                                 <Badge bg="info" className="etat-badge">
                                                     {livre.etat_livre_id}

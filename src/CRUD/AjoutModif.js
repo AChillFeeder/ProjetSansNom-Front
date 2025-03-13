@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { API_URL } from '../Constante';
 import './AjoutModif.css';
 
 const AjoutModif = ({ show, handleClose, mode, livre, onSubmit }) => {
@@ -25,20 +26,57 @@ const AjoutModif = ({ show, handleClose, mode, livre, onSubmit }) => {
         }
     }, [livre, mode]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         if (e) e.preventDefault();
         
-        // Create a clean object without any circular references
-        const cleanData = {
-            titre_livre: formData.titre_livre.trim(),
-            titre_annonce: formData.titre_annonce.trim(),
-            description_annonce: formData.description_annonce.trim(),
-            etat_livre_id: parseInt(formData.etat_livre_id) || 0,
-            prix: parseFloat(formData.prix) || 0
-        };
-        
-        onSubmit(cleanData);
-        handleClose();
+        try {
+            // Create data object in the required format
+            const formattedData = {
+                titre_livre: formData.titre_livre.trim(),
+                titre_annonce: formData.titre_annonce.trim(),
+                description_annonce: formData.description_annonce.trim(),
+                etat_livre: parseInt(formData.etat_livre_id) || 1,
+                prix: parseFloat(formData.prix) || 0
+            };
+
+            // Add created_by only for new entries
+            if (mode !== 'modification') {
+                formattedData.created_by = 10;
+            }
+
+            const url = mode === 'modification' 
+                ? `${API_URL}/api/annonces/${livre.id}`
+                : `${API_URL}/api/annonces`;
+
+            console.group('API Request Details');
+            console.log('URL:', url);
+            console.log('Method:', mode === 'modification' ? 'PUT' : 'POST');
+            console.log('Data:', formattedData);
+
+            const response = await fetch(url, {
+                method: mode === 'modification' ? 'PUT' : 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(formattedData)
+            });
+
+            const data = await response.json();
+            console.log('Response:', data);
+            console.groupEnd();
+
+            if (!response.ok) {
+                throw new Error(data.message || `Erreur lors de ${mode === 'modification' ? 'la modification' : "l'ajout"} de l'annonce`);
+            }
+
+            onSubmit(data);
+            handleClose();
+            
+        } catch (error) {
+            console.error('Error:', error);
+            alert(`Erreur: ${error.message}`);
+        }
     };
 
     const handleChange = (e) => {
@@ -64,7 +102,7 @@ const AjoutModif = ({ show, handleClose, mode, livre, onSubmit }) => {
                 <Col md={8}>
                     <Card>
                         <Card.Body>
-                            <h2 className="text-center mb-4">{mode === 'ajout' ? 'Ajouter un livre' : 'Modifier le livre'}</h2>
+                            <h2 className="text-center mb-4">{mode === 'ajout' ? 'Ajouter une annonce' : "Modifier l'annonce"}</h2>
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Titre du livre*</Form.Label>
@@ -154,7 +192,7 @@ const AjoutModif = ({ show, handleClose, mode, livre, onSubmit }) => {
                 <Modal.Header closeButton className="border-0">
                     <Modal.Title className="text-success">
                         <i className="fas fa-book me-2"></i>
-                        {mode === 'ajout' ? 'Ajouter un livre' : 'Modifier le livre'}
+                        {mode === 'ajout' ? 'Ajouter une annonce' : "Modifier l'annonce"}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
