@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import "./Messagerie.css";
 
-const socket = io("http://0.0.0.0:8080");
+const socket = io("https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io");
 
 export default function MessagingPage() {
   const [allMessages, setAllMessages] = useState([]);
@@ -17,7 +17,7 @@ export default function MessagingPage() {
     const storedToken = localStorage.getItem("token");
 
     if (storedId && storedToken) {
-      fetch(`http://0.0.0.0:8080/messages/user/${storedId}`)
+      fetch(`https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io/messages/user/${storedId}`)
         .then((res) => res.json())
         .then((data) => {
           setAllMessages(data);
@@ -34,7 +34,7 @@ export default function MessagingPage() {
           }));
           Promise.all(
             convArray.map(async (conv) => {
-              const res = await fetch(`http://0.0.0.0:8080/api/users/${conv.partnerId}`);
+              const res = await fetch(`https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io/api/users/${conv.partnerId}`);
               const partnerData = await res.json();
               return {
                 ...conv,
@@ -45,7 +45,7 @@ export default function MessagingPage() {
           ).then((updatedConvs) => setConversations(updatedConvs));
         });
 
-      fetch("http://0.0.0.0:8080/api/currentUser", {
+      fetch("https://app-787be4c4-3ac8-43da-a1e2-e869e769344d.cleverapps.io/api/currentUser", {
         headers: {
           Authorization: `Bearer ${storedToken}`,
           userId: storedId,
