@@ -10,6 +10,7 @@ import AjoutModif from './CRUD/AjoutModif';
 import Suppression from './CRUD/Suppression';
 import reportWebVitals from './reportWebVitals';
 import Messagerie from './Messagerie/Messagerie';
+import CGU from './CGU/CGU';
 
 import HealthCheck from './HealthCheck/HealthCheck';
 
@@ -27,6 +28,7 @@ root.render(
         <Route path="/healthcheck" element={<HealthCheck />} />
         <Route path="/messagerie" element={<Messagerie />} />
         <Route path="/healthcheck" element={<HealthCheck />} />
+        <Route path="./cgu" element={<CGU />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
