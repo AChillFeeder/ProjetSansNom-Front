@@ -1,0 +1,102 @@
+.book-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    height: 350px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out;
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+}
+
+/* Image Container with Gradient Overlay */
+.book-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    position: relative;
+}
+
+/* Add a gradient overlay for better readability */
+.book-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top , transparent, rgba(0, 0, 0, 0.4));
+}
+
+/* Book Content (text section) */
+.book-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+/* Book Title (should not cross the middle) */
+.book-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(1, 1, 1);
+    width: 100%;
+    padding: 8px 0;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.484);
+    position: absolute;
+    top: 40%;
+}
+
+/* Book Author */
+.book-author {
+    font-size: 14px;
+    color: #444;
+    margin-top: auto;
+}
+
+/* Book Price (Stylized Position) */
+.book-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* Contact Seller Button at the Absolute Bottom */
+.message-seller-btn {
+    width: 100%;
+    background: #509756;
+    border: none;
+    padding: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+}
+
+.message-seller-btn:hover {
+    background: linear-gradient(90deg, #60b467, rgb(101, 192, 109));
+}
