@@ -195,5 +195,5 @@ const Accueil = () => {
       </footer>
     </div>
   );
-
-export default Accueil;
+}
+export default Accueil
