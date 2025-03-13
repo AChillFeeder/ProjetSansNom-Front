@@ -86,7 +86,7 @@ function Inscription() {
                         <button type="submit" className="login-button">S'inscrire</button>
                     </form>
                     <p className="signup-text">
-                        Déjà inscrit ? <a href="/login">Se connecter</a>
+                        Déjà inscrit ? <a href="/">Se connecter</a>
                     </p>
                 </div>
             </header>
