@@ -14,6 +14,8 @@ import CGU from './CGU/CGU';
 import MentionLegale from './MentionLegale/MentionLegale';
 
 import HealthCheck from './HealthCheck/HealthCheck';
+import UserProfile from './Profil/Profil';
+import Profil from './Profil/Profil';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -29,6 +31,7 @@ root.render(
         <Route path="/healthcheck" element={<HealthCheck />} />
         <Route path="/messagerie" element={<Messagerie />} />
         <Route path="/healthcheck" element={<HealthCheck />} />
+        <Route path="/profil" element={<Profil />} />
         <Route path="./cgu" element={<CGU />} />
         <Route path="./mentionlegale" element={<MentionLegale />} />
       </Routes>

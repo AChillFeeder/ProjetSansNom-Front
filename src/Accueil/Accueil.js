@@ -46,7 +46,10 @@ const Accueil = () => {
             onClick={() => (window.location.href = "/mesagerie")}>
             Messagerie
           </button>
-          <button className="profile-button">Profil</button>
+          <button className="profile-button"
+            onClick={() => (window.location.href = "/profil")}>
+            Profil
+          </button>
         </div>
       </header>
       <main className="main-content">
