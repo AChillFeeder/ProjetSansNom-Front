@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
 import "./Accueil.css";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../Constante";
 import BookCard from "../components/BookCard";
 import React, { useEffect, useState } from "react";
-import "./Accueil.css";
-import { Link, useNavigate } from "react-router-dom";
-import { API_URL } from "../Constante";
 
 const Accueil = () => {
   const [recommendedBooks, setRecommendedBooks] = useState([]);
@@ -26,8 +22,6 @@ const Accueil = () => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
         });
 
         
@@ -83,8 +77,6 @@ const Accueil = () => {
         headers: {
           "Content-Type": "application/json", 
           Authorization: `Bearer ${localStorage.getItem("token")}`
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           id_sender: userId,
