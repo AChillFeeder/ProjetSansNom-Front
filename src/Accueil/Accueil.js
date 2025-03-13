@@ -33,8 +33,6 @@ const Accueil = () => {
 
         setRecommendedBooks(data.slice(0, 5));
         setPopularBooks(data.slice(5, 10));
-        setFilteredRecommended(data.slice(0, 5));
-        setFilteredPopular(data.slice(5, 10));
       } catch (error) {
         setMessage(`❌ Erreur : ${error.message}`);
       } finally {
@@ -98,9 +96,6 @@ const Accueil = () => {
     <div className="home-container">
       <header className="header">
         <div className="left"><span className="bold_title_part">ME</span>|BOOK</div>
-        <div className="left">
-          <span className="bold_title_part">ME</span>|BOOK
-        </div>
         <div className="center">
           <input
             type="text"
@@ -130,23 +125,6 @@ const Accueil = () => {
             {recommendedBooks.map(book => (
               <BookCard key={book.id} book={book} handleStartConversation={handleStartConversation} />
             ))}
-            {filteredRecommended.length > 0 ? (
-              filteredRecommended.map((book) => (
-                <div key={book.id} className="book-card">
-                  <h3 className="book-title">{book.titre_livre.slice(0, 100)}...</h3>
-                  <p className="book-author">{book.nom} {book.prenom}</p>
-                  <p className="book-price">{book.prix}€</p>
-                  <button
-                    className="message-seller-btn"
-                    onClick={() => handleStartConversation(book.created_by, book.nom, book.prenom)}
-                  >
-                    Envoyer un message au vendeur
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>Aucun livre trouvé.</p>
-            )}
           </div>
         </section>
 
@@ -156,26 +134,6 @@ const Accueil = () => {
             {popularBooks.map(book => (
               <BookCard key={book.id} book={book} handleStartConversation={handleStartConversation} />
             ))}
-            {filteredPopular.length > 0 ? (
-              filteredPopular.map((book) => (
-                <div key={book.id} className="book-card">
-                  <img src={book.chemin_photo} alt={book.titre_livre} className="book-image" />
-                  <h3 className="book-title">
-                    {book.titre_livre.length > 100 ? book.titre_livre.slice(0, 100) + "..." : book.titre_livre}
-                  </h3>
-                  <p className="book-author">{book.nom} {book.prenom}</p>
-                  <p className="book-price">{book.prix}€</p>
-                  <button
-                    className="message-seller-btn"
-                    onClick={() => handleStartConversation(book.created_by, book.nom, book.prenom)}
-                  >
-                    Envoyer un message au vendeur
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>Aucun livre trouvé.</p>
-            )}
           </div>
         </section>
       </main>
