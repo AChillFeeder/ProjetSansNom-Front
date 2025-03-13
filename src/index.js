@@ -6,6 +6,7 @@ import Connexion from './Authentification/Connexion';
 import Inscription from './Authentification/Inscription';
 import Accueil from './Accueil/Accueil';
 import reportWebVitals from './reportWebVitals';
+import Messagerie from './Messagerie/Messagerie';
 
 import HealthCheck from './HealthCheck/HealthCheck';
 
@@ -17,6 +18,8 @@ root.render(
         <Route path="/" element={<Accueil />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/inscription" element={<Inscription />} />
+        <Route path="/healthcheck" element={<HealthCheck />} />
+        <Route path="/messagerie" element={<Messagerie />} />
         <Route path="/healthcheck" element={<HealthCheck />} />
       </Routes>
     </BrowserRouter>
