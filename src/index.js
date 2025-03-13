@@ -20,6 +20,7 @@ root.render(
         <Route path="/inscription" element={<Inscription />} />
         <Route path="/healthcheck" element={<HealthCheck />} />
         <Route path="/messagerie" element={<Messagerie />} />
+        <Route path="/healthcheck" element={<HealthCheck />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
