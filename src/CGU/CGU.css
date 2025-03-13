@@ -82,4 +82,19 @@
   .signup-text a:hover {
     text-decoration: underline;
   }
+
+  .back-button {
+    margin-top: 2rem;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
   
+  .back-button:hover {
+    background-color: #45a049;
+  }

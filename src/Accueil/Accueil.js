@@ -84,7 +84,7 @@ const Accueil = () => {
         </div>
         <div className="social-legal">
           <span>Réseaux sociaux</span>
-          <span>Mentions légales</span>
+          <a href="/mentionlegale">Mentions légales</a>
         </div>
       </footer>
     </div>
