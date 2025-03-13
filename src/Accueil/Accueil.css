@@ -68,7 +68,8 @@
   }
   
   .header .message-button,
-  .header .profile-button {
+  .header .profile-button,
+  .header .annonces-button {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;

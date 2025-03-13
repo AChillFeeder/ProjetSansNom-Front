@@ -108,6 +108,9 @@ const Accueil = () => {
           <button className="search-button">🔍</button>
         </div>
         <div className="right">
+        <Link to="/consultation">
+            <button className="annonces-button">Toutes les annonces</button>
+          </Link>
           <Link to="/messagerie">
             <button className="message-button">Messagerie</button>
           </Link>
@@ -169,6 +172,35 @@ const Accueil = () => {
           </div>
         </section>
       </main>
+
+      <footer className="footer">
+ 
+
+        <div className="useful-links">
+ 
+
+          <a href="/cgu">CGU</a>
+ 
+
+          <a href="/contact">Contact</a>
+ 
+
+        </div>
+ 
+
+        <div className="social-legal">
+ 
+
+          <span>Réseaux sociaux</span>
+ 
+
+          <span>Mentions légales</span>
+ 
+
+        </div>
+ 
+
+      </footer>
     </div>
   );
 };
