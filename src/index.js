@@ -11,6 +11,7 @@ import Suppression from './CRUD/Suppression';
 import reportWebVitals from './reportWebVitals';
 import Messagerie from './Messagerie/Messagerie';
 import CGU from './CGU/CGU';
+import Profil from './Profil/Profil';
 import MentionLegale from './MentionLegale/MentionLegale';
 import HealthCheck from './HealthCheck/HealthCheck';
 
@@ -29,6 +30,7 @@ root.render(
         <Route path="/messagerie" element={<Messagerie />} />
         <Route path="/healthcheck" element={<HealthCheck />} />
         <Route path="/cgu" element={<CGU />} />
+        <Route path="/profil" element={<Profil />} />
         <Route path="/mentionlegale" element={<MentionLegale />} />
       </Routes>
     </BrowserRouter>
